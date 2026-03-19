@@ -1,0 +1,134 @@
+# 通用资产配置
+entity:
+  code: "asset"
+  name: "资产"
+  nameEn: "Asset"
+  description: "通用资产管理系统"
+
+lifecycle:
+  enabled: true
+  stages:
+    - key: "request"
+      label: "申购"
+      labelEn: "Request"
+      enabled: true
+      require_approval: true
+    - key: "purchasing"
+      label: "采购中"
+      labelEn: "Purchasing"
+      enabled: true
+    - key: "stock_in"
+      label: "入库"
+      labelEn: "Stock In"
+      enabled: true
+    - key: "in_storage"
+      label: "库存"
+      labelEn: "In Storage"
+      enabled: true
+    - key: "borrowed"
+      label: "已借出"
+      labelEn: "Borrowed"
+      enabled: true
+    - key: "maintenance"
+      label: "保修中"
+      labelEn: "Maintenance"
+      enabled: true
+    - key: "consumed"
+      label: "已用完"
+      labelEn: "Consumed"
+      enabled: true
+      is_final: true
+    - key: "scrapped"
+      label: "已报废"
+      labelEn: "Scrapped"
+      enabled: true
+      is_final: true
+    - key: "rejected"
+      label: "已拒绝"
+      labelEn: "Rejected"
+      enabled: true
+      is_final: true
+
+fields:
+  - key: "code"
+    label: "资产编号"
+    labelEn: "Asset Code"
+    type: "string"
+    required: true
+    unique: true
+    index: true
+    maxLength: 50
+  - key: "name"
+    label: "资产名称"
+    labelEn: "Asset Name"
+    type: "string"
+    required: true
+    maxLength: 200
+    pinyin: true
+  - key: "category"
+    label: "分类"
+    labelEn: "Category"
+    type: "select"
+    enabled: true
+    index: true
+  - key: "brand"
+    label: "品牌"
+    labelEn: "Brand"
+    type: "autocomplete"
+    enabled: true
+  - key: "model"
+    label: "型号"
+    labelEn: "Model"
+    type: "string"
+    enabled: true
+    maxLength: 100
+  - key: "serial_number"
+    label: "序列号"
+    labelEn: "Serial Number"
+    type: "string"
+    enabled: true
+  - key: "quantity"
+    label: "数量"
+    labelEn: "Quantity"
+    type: "number"
+    required: true
+    default: 1
+  - key: "unit"
+    label: "单位"
+    labelEn: "Unit"
+    type: "select"
+    enabled: true
+  - key: "location"
+    label: "存放位置"
+    labelEn: "Location"
+    type: "string"
+    enabled: true
+    index: true
+  - key: "purchase_price"
+    label: "采购价格"
+    labelEn: "Purchase Price"
+    type: "number"
+    enabled: true
+  - key: "purchase_date"
+    label: "采购日期"
+    labelEn: "Purchase Date"
+    type: "date"
+    enabled: true
+  - key: "warranty_end_date"
+    label: "保修截止日期"
+    labelEn: "Warranty End Date"
+    type: "date"
+    enabled: true
+  - key: "notes"
+    label: "备注"
+    labelEn: "Notes"
+    type: "textarea"
+    enabled: true
+    maxLength: 500
+
+rules:
+  borrow:
+    enabled: true
+    max_quantity: 1
+    max_days: 30
+    require_approval: false

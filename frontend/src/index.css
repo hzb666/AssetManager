@@ -1,0 +1,375 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* 思源黑体用于中文，Arial 用于英文 */
+  --font-source-han-sans-sc: 'SourceHanSansSC', 'SourceHanSansSC', sans-serif;
+  --font-arial: 'Arial', 'Helvetica', sans-serif;
+  --font-inter: 'Inter', 'sans-serif';
+  --font-manrope: 'Manrope', 'sans-serif';
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar-bg);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-page-card: var(--page-card);
+}
+
+:root {
+  --radius: 0.625rem;
+  --app-font-family-fallback: 'Arial', 'Helvetica Neue', 'Microsoft YaHei', 'PingFang SC', 'Segoe UI', sans-serif;
+  --app-font-family-web: 'Arial', 'Helvetica Neue', 'SourceHanSansSC-CJK', '思源黑体', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+  /* 页面主背景 - 浅灰色 */
+  --background: oklch(0.97 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  /* 内容卡片背景 - 白色 */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.945 0.015 264.531);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.984 0.003 247.858);
+  --border: oklch(0.922 0.016 264.531);
+  --input: oklch(0.922 0.016 264.531);
+  --ring: oklch(0.704 0.04 256.788);
+  
+  /* 侧边栏背景色 - 中性灰色 */
+  --sidebar-bg: oklch(0.97 0 0);
+  --sidebar: var(--sidebar-bg);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: oklch(0.92 0.015 264.531);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.88 0.02 264.531);
+  --sidebar-ring: var(--ring);
+  /* 内容卡片背景 - Layout 页面使用 */
+  --page-card: oklch(0.9881 0 0);
+  /* 对话框背景 - 日间模式白色 */
+  --dialog: oklch(1 0 0);
+  --card1: oklch(1 0 0);
+
+}
+
+.dark {
+  /* 页面主背景 - 深灰色 */
+  --background: oklch(0.15 0.015 285.823);
+  --foreground: oklch(0.92 0 0);
+  /* 内容卡片背景 - 稍浅的深灰色 */
+  --card: oklch(0.22 0.015 285.823);
+  --card-foreground: oklch(0.92 0 0);
+  --popover: oklch(0.22 0.015 285.823);
+  --popover-foreground: oklch(0.92 0 0);
+  --primary: oklch(0.92 0 0);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.24 0.015 285.823);
+  --secondary-foreground: oklch(0.92 0 0);
+  --muted: oklch(0.22 0.015 285.823);
+  --muted-foreground: oklch(0.65 0.015 285.823);
+  --accent: oklch(0.24 0.015 285.823);
+  --accent-foreground: oklch(0.92 0 0);
+  --destructive: oklch(0.7022 0.1892 22.23);
+  --destructive-foreground: oklch(0.92 0 0);
+  --border: oklch(0.3 0.015 285.823);
+  --input: oklch(0.3 0.015 285.823);
+  --ring: oklch(0.92 0 0);
+  
+  /* 侧边栏背景色 - 深灰色 */
+  --sidebar-bg: oklch(0.12 0.015 285.823);
+  --sidebar: var(--sidebar-bg);
+  --sidebar-foreground: oklch(0.92 0 0);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: oklch(0.24 0.015 285.823);
+  --sidebar-accent-foreground: oklch(0.92 0 0);
+  --sidebar-border: oklch(0.28 0.015 285.823);
+  --sidebar-ring: var(--ring);
+  /* 内容卡片背景 - Layout 页面使用 */
+  --page-card: oklch(0.1698 0.0062 285.72);
+  --card1: oklch(0.22 0.015 285.823);
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    scrollbar-gutter: stable;
+    background-color: var(--sidebar-bg);
+    /* 移除 overflow-x: hidden，可能导致 sticky 定位问题 */
+    width: 100%;
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--app-font-family-fallback);
+    /* 防止布局变化导致的内容宽度抖动 */
+    min-height: 100%;
+    width: 100%;
+  }
+
+  html[data-font-state='loading'] body {
+    visibility: hidden;
+  }
+
+  html.web-fonts-ready body {
+    font-family: var(--app-font-family-web);
+  }
+
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* Prevent focus zoom on mobile devices */
+@media screen and (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 页面标题占位符 */
+@layer utilities {
+  .title-placeholder {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Input 垂直居中 - 使用 padding 适配不同高度 */
+  .input-vcenter {
+    padding-top: 0;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  /* 页面标题占位符 - 右侧没有按钮时使用::after保持对齐 */
+  .card-title-placeholder {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .card-title-placeholder::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 2.5rem;
+    visibility: hidden;
+  }
+}
+
+/* 精致阴影 - 亮色模式 */
+.shadow-card-light {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* 暗黑模式阴影 */
+.shadow-card-dark {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 页面卡片阴影 - 柔和，左侧更明显 */
+.page-card-shadow-light {
+  box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.03), 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.page-card-shadow-dark {
+  box-shadow: -1px 0 10px rgba(0, 0, 0, 0.3), 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   自定义滚动条 - 精修版
+   特性：轻微圆角，悬浮加粗加深，无上下三角，无交界方框
+   ========================================= */
+
+/* 1. 针对 Webkit 浏览器 (Chrome, Edge, Safari) */
+
+/* 统一定义滚动条容器物理总宽度 (10px) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; /* 横向滚动条高度 */
+}
+
+/* --- 核心：滑块 (Thumb) --- */
+::-webkit-scrollbar-thumb {
+  /* [颜色] 亮色模式初始颜色 */
+  background-color: #cbd5e1;
+  background-clip: padding-box; /* 关键：确保背景只在 border 内部渲染 */
+  
+  /* [粗细控制 - 初始] */
+  border: 3px solid transparent; /* 3px透明边框，使色块视觉宽度为 10 - 3*2 = 4px */
+  
+  /* [新增强调：轻微圆角] */
+  border-radius: 5px; /* 这里设置略大的值，配合 border 挤压会形成轻微的胶囊感 */
+}
+
+/* [滑块 Hover 状态] */
+::-webkit-scrollbar-thumb:hover {
+  /* [颜色] 悬浮加深 */
+  background-color: #94a3b8;
+  
+  /* [粗细控制 - Hover] */
+  border: 1px solid transparent; /* 1px透明边框，色块向外扩张，视觉宽度为 10 - 1*2 = 8px */
+  
+  /* [关键：Hover 时必须再次声明圆角] */
+  border-radius: 5px;
+}
+
+/* --- 轨道 (Track) --- */
+::-webkit-scrollbar-track {
+  background: transparent; /* 轨道保持透明 */
+}
+
+/* --- [修正：隐藏所有三角按钮] --- */
+::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* --- [新增强调：删除交界处小方框] --- */
+::-webkit-scrollbar-corner {
+  background: transparent; /* 将死角背景设为透明 */
+}
+
+
+/* 2. 暗黑模式适配 (基于 .dark 类名) */
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #475569;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #64748b;
+}
+
+
+/* 3. 针对 Firefox 的降级处理 (Firefox 不支持悬浮变粗和Corner控制) */
+/* 仅在浏览器不支持 webkit 滚动条伪元素时应用 */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin; /* Firefox 只能选 standard 或 thin */
+    scrollbar-color: #cbd5e1 transparent; /* 滑块颜色 轨道颜色 */
+  }
+  
+  .dark * {
+    scrollbar-color: #475569 transparent;
+  }
+}
+/* Toast 淡出动画 */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.animate-out {
+  animation: fade-out 300ms ease-in-out forwards;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.table-row-expand-enter {
+  animation: row-expand 0.25s ease-out forwards;
+}
+
+.table-row-expand-exit {
+  animation: row-collapse 0.2s ease-in forwards;
+}
+
+/* =========================================
+   Marquee Animation for Announcement Banner
+   ========================================= */
+/* index.css */
+
+/* index.css */
+
+@keyframes marquee-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 移动整个容器的宽度 */
+    transform: translateX(-100%);
+  }
+}
+
+.marquee-root {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.marquee-content {
+  display: flex;
+  flex-shrink: 0;
+  /* 确保每一组内容至少撑满整个父容器宽度，防止中间断裂 */
+  min-width: 100%; 
+  align-items: center;
+  animation: marquee-infinite 50s linear infinite;
+}
+
+/* 悬停时，两个内容块必须同时停止，否则会错位 */
+.marquee-root:hover .marquee-content {
+  animation-play-state: paused;
+}

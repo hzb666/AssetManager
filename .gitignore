@@ -1,0 +1,84 @@
+# Environment variables (never commit these!)
+.env
+.env.local
+.env.*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+requirements.txt
+.mypy_cache/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode
+.idea/
+.cursor/
+.history/
+.claude/
+.kilocode/
+.sonar/
+*.sw?
+*.sw
+CLAUDE.md
+AGENTS.md
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+
+# JWT
+Thumbs.db RSA Keys (never commit these!)
+.keys/
+private.pem
+public.pem
+
+# Frontend (already in frontend/.gitignore but keeping for root)
+node_modules/
+dist/
+*.local
+
+# Template/External projects (do not commit)
+shadcn-admin/
+
+# Local library files
+frontend/public/lib/
+
+# Docs subdirectories (keep root docs)
+docs/done/
+docs/exp/
+docs/plans/
+docs/prompt/
+
+# Tests
+tests/
+scripts/
+
+# Plans (do not commit)
+plans/
+
+static/
+report/

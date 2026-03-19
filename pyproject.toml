@@ -1,0 +1,54 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "asset-manager"
+version = "0.1.0"
+description = "AssetManager - Universal asset lifecycle management system"
+authors = ["AssetManager Team"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+# Web Framework
+fastapi = "^0.109.0"
+uvicorn = {extras = ["standard"], version = "^0.27.0"}
+python-multipart = "^0.0.6"
+
+# Database
+sqlmodel = "^0.0.37"
+
+# Auth
+python-jose = {version = "^3.3.0", extras = ["cryptography"]}
+bcrypt = "^3.2.0"
+
+# Utilities
+python-dotenv = "^1.0.0"
+pillow = "^11.0.0"
+pandas = "^2.1.0"
+pydantic = "^2.5.0"
+pydantic-settings = "^2.1.0"
+pypinyin = "^0.55.0"
+requests = "^2.31.0"
+pyyaml = "^6.0.0"
+redis = "^7.3.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+pytest-asyncio = "^0.23.0"
+httpx = "^0.26.0"
+
+
+[tool.poetry.group.scripts.dependencies]
+openpyxl = "^3.1.5"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
